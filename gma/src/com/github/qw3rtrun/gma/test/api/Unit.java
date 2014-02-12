@@ -1,11 +1,10 @@
-package com.github.qw3rtrun.gma.test;
+package com.github.qw3rtrun.gma.test.api;
 
 import javax.validation.constraints.NotNull;
 
 import checkers.nullness.quals.NonNull;
 
-public interface Unit {
-	public @NonNull String getId();
+public interface Unit extends com.github.qw3rtrun.gma.core.Context {
 
 	public int getHealthPoint();
 
@@ -25,17 +24,13 @@ public interface Unit {
 		return true;
 	}
 
-	default public boolean isSame(@NonNull Unit other) {
-		return getId().equals(other.getId());
-	}
-
-	public static class Context implements Unit {
+	public static class Impl implements Unit {
 		private final @NonNull String id;
 		private final int healthPoint;
 		private final int attackDamage;
 		private final int defensePoint;
 
-		public Context(@NotNull String id, int healthPoint, int attackDamage,
+		public Impl(@NotNull String id, int healthPoint, int attackDamage,
 				int defensePoint) {
 			super();
 			this.id = id;
@@ -83,7 +78,7 @@ public interface Unit {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			Context other = (Context) obj;
+			Impl other = (Impl) obj;
 			if (attackDamage != other.attackDamage)
 				return false;
 			if (defensePoint != other.defensePoint)

@@ -1,11 +1,12 @@
 package com.github.qw3rtrun.gma.test;
 
-import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
 
-import com.github.qw3rtrun.gma.core.SingleContext;
+import com.github.qw3rtrun.gma.core.card.Card;
+import com.github.qw3rtrun.gma.test.api.Unit;
+import com.github.qw3rtrun.gma.test.api.UnitIntroduceEvent;
 
-public class UnitAggregate extends AbstractAnnotatedAggregateRoot<String> implements SingleContext<Unit> {
+public class UnitCard extends Card<Unit> {
 
 	private static final long serialVersionUID = 2530134482647458407L;
 
@@ -18,16 +19,13 @@ public class UnitAggregate extends AbstractAnnotatedAggregateRoot<String> implem
 
 	private int defensePoint;
 
-	public UnitAggregate() {
+	public UnitCard() {
 		super();
 	}
 
-	public UnitAggregate(String id, int healthPoint, int attackDamage, int defense) {
+	public UnitCard(String id, int healthPoint, int attackDamage, int defense) {
 		super();
-		this.id = id;
-		this.healthPoint = healthPoint;
-		this.attackDamage = attackDamage;
-		this.defensePoint = defense;
+		apply(new UnitIntroduceEvent(new Unit.Impl(id, healthPoint, attackDamage, defense)));
 	}
 
 	public String getId() {
@@ -81,7 +79,7 @@ public class UnitAggregate extends AbstractAnnotatedAggregateRoot<String> implem
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UnitAggregate other = (UnitAggregate) obj;
+		UnitCard other = (UnitCard) obj;
 		if (attackDamage != other.attackDamage)
 			return false;
 		if (defensePoint != other.defensePoint)
@@ -105,7 +103,7 @@ public class UnitAggregate extends AbstractAnnotatedAggregateRoot<String> implem
 
 	@Override
 	public Unit get() {
-		return new Unit.Context(id, healthPoint, attackDamage, defensePoint); 
+		return new Unit.Impl(id, healthPoint, attackDamage, defensePoint); 
 	}
 	
 }
