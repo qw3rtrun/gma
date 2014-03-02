@@ -30,5 +30,6 @@
 		<dependency org="org.jscience" name="jscience" rev="4.+"/>
 		<dependency org="org.mockito" name="mockito-core" rev="1.+"/>
 		<dependency org="edu.washington.cs.types.checker" name="checker-quals" rev="1.+"/>
+		<dependency org="ch.qos.logback" name="logback-classic" rev="1.0.13"/>
 	</dependencies>
 </ivy-module>

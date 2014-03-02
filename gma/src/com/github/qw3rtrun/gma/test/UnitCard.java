@@ -2,9 +2,7 @@ package com.github.qw3rtrun.gma.test;
 
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
 
-import com.github.qw3rtrun.gma.core.card.Card;
-import com.github.qw3rtrun.gma.test.api.Unit;
-import com.github.qw3rtrun.gma.test.api.UnitIntroduceEvent;
+import com.github.qw3rtrun.gma.core.Card;
 
 public class UnitCard extends Card<Unit> {
 

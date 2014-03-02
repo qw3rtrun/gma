@@ -2,8 +2,6 @@ package com.github.qw3rtrun.gma.test;
 
 import org.axonframework.repository.Repository;
 
-import com.github.qw3rtrun.gma.test.api.Unit;
-
 import checkers.nullness.quals.NonNull;
 
 public class UnitCroupier {

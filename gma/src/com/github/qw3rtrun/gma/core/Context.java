@@ -2,7 +2,7 @@ package com.github.qw3rtrun.gma.core;
 
 import checkers.nullness.quals.NonNull;
 
-import com.github.qw3rtrun.gma.test.api.Unit;
+import com.github.qw3rtrun.gma.test.Unit;
 
 public interface Context {
 	public @NonNull String getId();
